@@ -3,7 +3,7 @@
 playwright e2e test demonstrating UI interaction with the Tally extension.
 
 ## Test details
-- The test imports a recovery phrase and connects and disconnects from a dapp. 
+- The test imports a recovery phrase and connects and disconnects from a dapp 
 - Interaction is done by opening popup.html of the extension in its own page
  
 ## Setup
