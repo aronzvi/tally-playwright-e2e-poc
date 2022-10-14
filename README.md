@@ -17,7 +17,7 @@ playwright e2e test demonstrating UI interaction with the Tally extension.
 ## Files
 In the tests directory:
 
-**poc.spec.ts** - Our test file
+**poc.spec.ts** - Our test file  
 **chrome-extension** - The tally chrome extension files
 
 
