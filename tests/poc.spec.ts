@@ -73,9 +73,10 @@ test("Import, connect and dissconnect", async ({ page, context, extensionId }) =
   await page.locator('text=settings').click();
   await page.locator('text=Connected websites').click();
 
-  await page.waitForTimeout(2000); // Can remove this. We sleep here just to show that we are connected
+  // The timeouts are here only to pause and show that we are connected/disconnected and can be removed
+  await page.waitForTimeout(2000); 
   await page.locator('xpath=//li[contains(., "CowSwap")]//button').click();
-  await page.waitForTimeout(2000); // Can remove this. We sleep here just to show that we are disconnected
+  await page.waitForTimeout(2000);
 });
 
 
