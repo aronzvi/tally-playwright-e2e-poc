@@ -7,9 +7,7 @@ export const test = base.extend<{
 }>({
   context: async ({ }, use) => {
     const pathToExtension = path.join(__dirname, "chrome-extension");
-    
-    // 
-    const context = await chromium.launchPersistentContext("", { // set to some path in order to store browser session data 
+    const context = await chromium.launchPersistentContext("", {
       headless: false,
       args: [
         `--disable-extensions-except=${pathToExtension}`,
@@ -37,7 +35,7 @@ export const test = base.extend<{
   },
 });
 
-test("Import, connect and dissconnect", async ({ page, context, extensionId }) => {
+test("Fail", async ({ page, context, extensionId }) => {
   const passwd = 'VoXaXa!239';
   const recoveryPhrase = "tilt ski leave code make fantasy rifle learn wash quiz youth inside promote garlic cat album tell pass between hub brush evolve staff imitate"
  
@@ -74,6 +72,8 @@ test("Import, connect and dissconnect", async ({ page, context, extensionId }) =
   await page.bringToFront();
   await page.locator('text=settings').click();
   await page.locator('text=Connected websites').click();
+
+  throw new Error('Something bad happened');
 
   // The timeouts are here only to pause and show that we are connected/disconnected and can be removed
   await page.waitForTimeout(2000); 
