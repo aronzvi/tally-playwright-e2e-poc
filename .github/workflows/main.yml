@@ -10,10 +10,8 @@ jobs:
       - uses: actions/setup-node@v2
       - name: Install dependencies
         run: | 
-          cd tests
           npm ci
           npx playwright install-deps
           npx playwright install
       - name: Run tests
-        working-directory: tests 
         run: xvfb-run npx playwright test
