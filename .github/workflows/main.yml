@@ -9,5 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - uses: microsoft/playwright-github-action@v1
+      - name: Install dependencies and run tests
+        run: npm install
       - name: Run tests
         run: xvfb-run npx playwright test
