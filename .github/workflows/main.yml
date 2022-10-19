@@ -8,8 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: microsoft/playwright-github-action@v1
-      - name: Install dependencies and run tests
-        run: npm install
+      - name: Install dependencies
+        run: npx playwright install-deps chromium
       - name: Run tests
         run: xvfb-run npx playwright test
