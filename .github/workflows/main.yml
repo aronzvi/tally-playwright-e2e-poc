@@ -26,7 +26,7 @@ jobs:
         with:
           name: extension-builds.zip
       - name: Extract extention
-      - run: unzip extension-builds.zip
+      - run: unzip extension-builds.zip -d tests/ && ls tests
       - name: Run Playwright tests
         run: xvfb-run npx playwright test
       - uses: actions/upload-artifact@v2
