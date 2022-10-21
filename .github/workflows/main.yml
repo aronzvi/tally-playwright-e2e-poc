@@ -21,7 +21,6 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
-      - name: Download extention from build
       - uses: actions/download-artifact@v3
         with:
           name: extension-builds.zip
