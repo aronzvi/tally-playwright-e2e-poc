@@ -6,7 +6,7 @@ export const test = base.extend<{
   extensionId: string;
 }>({
   context: async ({ }, use) => {
-    const pathToExtension = path.join(__dirname, "chrome");
+    const pathToExtension = path.resolve(__dirname,'../dist/chrome');
     const context = await chromium.launchPersistentContext("", {
       headless: false,
       args: [
