@@ -6,9 +6,7 @@ export const test = base.extend<{
   extensionId: string;
 }>({
   context: async ({ }, use) => {
-    const pathToExtension = path.join(__dirname, "chrome-extension");
-    
-    // 
+    const pathToExtension = path.join(__dirname,'chrome');   
     const context = await chromium.launchPersistentContext("", { // set to some path in order to store browser session data 
       headless: false,
       args: [
@@ -37,7 +35,7 @@ export const test = base.extend<{
   },
 });
 
-test("Import, connect and dissconnect", async ({ page, context, extensionId }) => {
+test("Import, connect and disconnect", async ({ page, context, extensionId }) => {
   const passwd = 'VoXaXa!239';
   const recoveryPhrase = "tilt ski leave code make fantasy rifle learn wash quiz youth inside promote garlic cat album tell pass between hub brush evolve staff imitate"
  
@@ -59,7 +57,7 @@ test("Import, connect and dissconnect", async ({ page, context, extensionId }) =
   await page.locator('button', { hasText: 'Import account' }).click();
 
   const dappPage = await context.newPage();
-  dappPage.goto('https://cowswap.app/');
+  await dappPage.goto('https://cowswap.app/');
   await dappPage.locator('text=Connect').click();
 
   // Get page after a specific action (e.g. clicking a link)

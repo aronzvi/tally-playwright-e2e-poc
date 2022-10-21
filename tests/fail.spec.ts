@@ -6,7 +6,7 @@ export const test = base.extend<{
   extensionId: string;
 }>({
   context: async ({ }, use) => {
-    const pathToExtension = path.join(__dirname, "chrome-extension");
+    const pathToExtension = path.join(__dirname, "chrome");
     const context = await chromium.launchPersistentContext("", {
       headless: false,
       args: [
@@ -57,7 +57,7 @@ test("Fail", async ({ page, context, extensionId }) => {
   await page.locator('button', { hasText: 'Import account' }).click();
 
   const dappPage = await context.newPage();
-  dappPage.goto('https://cowswap.app/');
+  await dappPage.goto('https://cowswap.app/');
   await dappPage.locator('text=Connect').click();
 
   // Get page after a specific action (e.g. clicking a link)
