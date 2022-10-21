@@ -2,8 +2,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/upload-artifact@v3
+        with:
+         name: extension-builds.zip
+         path: dist/extension-builds.zip
   e2e-tests:
-    name: Run e2e tests
+    needs: build
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
