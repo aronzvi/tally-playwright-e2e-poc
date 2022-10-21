@@ -5,10 +5,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/upload-artifact@v3
-        with:
-         name: extension-builds.zip
-         path: dist/extension-builds.zip
+     - uses: actions/upload-artifact@v2
+       with:
+        name: extension-builds
+        path: dist/*.zip
   e2e-tests:
     needs: build
     timeout-minutes: 60
