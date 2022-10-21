@@ -25,7 +25,7 @@ jobs:
         with:
           name: extension-builds
       - name: Extract extention
-        run: unzip extension-builds.zip && unzip chrome.zip -d tests/
+        run: unzip extension-builds.zip && unzip chrome.zip -d tests/chrome
       - name: Run Playwright tests
         run: xvfb-run npx playwright test
       - uses: actions/upload-artifact@v2
