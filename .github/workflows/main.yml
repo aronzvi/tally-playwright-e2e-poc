@@ -23,7 +23,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - uses: actions/download-artifact@v3
         with:
-          name: extension-builds.zip
+          name: extension-builds
       - name: Extract extention
         run: unzip extension-builds.zip && unzip chrome.zip -d tests/
       - name: Run Playwright tests
