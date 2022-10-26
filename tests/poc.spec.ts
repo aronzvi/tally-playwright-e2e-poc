@@ -78,9 +78,11 @@ test("Import, connect and disconnect", async ({ page, context, extensionId }) =>
   await page.locator('xpath=//li[contains(., "CowSwap")]//button').click();
   await page.waitForTimeout(2000);
 
+  /*
   console.log('Extention page video: ' + await page.video().path());
   console.log('Popup page video: ' + await popupPage.video().path());
   console.log('Dapp page video: ' + await dappPage.video().path());
+  */
 });
 
 
