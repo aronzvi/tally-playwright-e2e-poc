@@ -33,6 +33,6 @@ jobs:
         with:
           name: debug-output
           path: |
-            playwright-report/
+            test-results/
             videos/
           retention-days: 30
