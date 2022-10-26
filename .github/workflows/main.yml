@@ -34,5 +34,5 @@ jobs:
           name: debug-output
           path: |
             test-results/
-            videos/
+            #videos/
           retention-days: 30
