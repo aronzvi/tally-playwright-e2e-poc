@@ -34,5 +34,5 @@ jobs:
           name: debug-output
           path: |
             playwright-report/
-            videos
+            videos/
           retention-days: 30
