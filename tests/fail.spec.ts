@@ -12,7 +12,6 @@ export const test = base.extend<{
       args: [
         `--disable-extensions-except=${pathToExtension}`,
         `--load-extension=${pathToExtension}`,
-        `--disable-gpu`,
       ],
     });
     await use(context);
