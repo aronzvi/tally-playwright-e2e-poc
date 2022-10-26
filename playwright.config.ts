@@ -47,13 +47,12 @@ const config: PlaywrightTestConfig = {
     /* Setting video here does not work in our case. See https://github.com/microsoft/playwright/issues/11833 */
     // video: 'retain-on-failure', 
     
-    /* 
     contextOptions: {
       recordVideo: {
         dir: './videos', // Or wherever you want the videos to be saved.
       }
     }
-    */
+    
     
   },
 
