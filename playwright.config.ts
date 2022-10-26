@@ -40,15 +40,19 @@ const config: PlaywrightTestConfig = {
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
-    video: 'retain-on-failure', // Not working if we create the context manually as we do. The below works but overrides mode
-    /* 
+
+    /* The trace will include screenshots so we don't need them */
+    //screenshot: 'only-on-failure',
+    
+    /* Setting video here does not work in our case. See https://github.com/microsoft/playwright/issues/11833 */
+    // video: 'retain-on-failure', 
+    
     contextOptions: {
       recordVideo: {
-        dir: './test-results' // Or wherever you want the videos to be saved.
+        dir: './videos', // Or wherever you want the videos to be saved.
       }
-    },
-    */
-    //screenshot: 'only-on-failure',
+    }
+    
   },
 
   /* Configure projects for major browsers */

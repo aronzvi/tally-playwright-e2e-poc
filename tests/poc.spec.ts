@@ -12,6 +12,7 @@ export const test = base.extend<{
       args: [
         `--disable-extensions-except=${pathToExtension}`,
         `--load-extension=${pathToExtension}`,
+        `--disable-gpu`, // Browser sometimes not displaying properly (choppy\black) running locally without this
       ],
     });
     await use(context);
@@ -77,8 +78,11 @@ test("Import, connect and disconnect", async ({ page, context, extensionId }) =>
   await page.waitForTimeout(2000); 
   await page.locator('xpath=//li[contains(., "CowSwap")]//button').click();
   await page.waitForTimeout(2000);
-});
 
+  console.log('Extention page video: ' + await page.video().path());
+  console.log('Popup page video: ' + await popupPage.video().path());
+  console.log('Dapp page video: ' + await dappPage.video().path());
+});
 
 
 

@@ -12,6 +12,7 @@ export const test = base.extend<{
       args: [
         `--disable-extensions-except=${pathToExtension}`,
         `--load-extension=${pathToExtension}`,
+        `--disable-gpu`,
       ],
     });
     await use(context);
@@ -54,6 +55,8 @@ test("Fail", async ({ page, context, extensionId }) => {
 
   await page.locator('textarea').type(recoveryPhrase);
 
+  throw new Error('Something bad happened');
+
   await page.locator('button', { hasText: 'Import account' }).click();
 
   const dappPage = await context.newPage();
@@ -72,8 +75,6 @@ test("Fail", async ({ page, context, extensionId }) => {
   await page.bringToFront();
   await page.locator('text=settings').click();
   await page.locator('text=Connected websites').click();
-
-  throw new Error('Something bad happened');
 
   // The timeouts are here only to pause and show that we are connected/disconnected and can be removed
   await page.waitForTimeout(2000); 
