@@ -1,41 +1,6 @@
-import { test as base, expect, BrowserContext, chromium } from "@playwright/test";
-import path from "path";
+import { tallyHoTest } from './utils';
 
-export const test = base.extend<{
-  context: BrowserContext;
-  extensionId: string;
-}>({
-  context: async ({ }, use) => {
-    const pathToExtension = path.resolve(__dirname,'../dist/chrome');
-    const context = await chromium.launchPersistentContext("", {
-      headless: false,
-      args: [
-        `--disable-extensions-except=${pathToExtension}`,
-        `--load-extension=${pathToExtension}`,
-      ],
-    });
-    await use(context);
-    await context.close();
-  },
-  extensionId: async ({ context }, use) => {
-    // for manifest v2:
-    let [background] = context.backgroundPages()
-    if (!background)
-      background = await context.waitForEvent("backgroundpage")
-    
-    /*
-    // for manifest v3:
-    let [background] = context.serviceWorkers();
-    if (!background)
-      background = await context.waitForEvent("serviceworker");
-    */
-
-    const extensionId = background.url().split("/")[2];
-    await use(extensionId);
-  },
-});
-
-test("Fail", async ({ page, context, extensionId }) => {
+tallyHoTest("Fail", async ({ page, context, extensionId }) => {
   const passwd = 'VoXaXa!239';
   const recoveryPhrase = "tilt ski leave code make fantasy rifle learn wash quiz youth inside promote garlic cat album tell pass between hub brush evolve staff imitate"
  
