@@ -55,22 +55,34 @@ export const tallyHoTest = base.extend<{
 
     await page.locator('text=Reveal my secret recovery phrase').click();
 
+    function extractWords(wordsHtml) {
+      return wordsHtml
+        .replace(/<[^>]*>?/gm, ' ')
+        .trim()
+        .split(' ')
+    }
+
+    const wordsDivs = await page.locator('div.column.words')
+    let words = extractWords(await wordsDivs.nth(0).innerHTML());
+    words = words.concat(extractWords(await wordsDivs.nth(1).innerHTML()));
+
+/*
     const words = await page.$$eval('.column.words', word_divs => {
         return word_divs.map(div => div.innerHTML.replace(/<[^>]*>?/gm, ' ')
                         .trim()
                         .split(' '))
                         .flat();
         });
+*/
+
     console.log(words);
     await page.locator('text=I wrote it down').click();
 
-    const word_containers = await page.locator('.word_index');
-    console.log("word_containers", word_containers);
-    const count = await word_containers.count();
-    console.log("count", count);
+    const wordContainers = await page.locator('.word_index');
+    const count = await wordContainers.count();
 
     for (let i = 0; i < count; i++) {
-        const el = word_containers.nth(i);
+        const el = wordContainers.nth(i);
         const idx = parseInt((await el.allInnerTexts())[0]) - 1;
         const word = words[idx];
         console.log(idx, word);
