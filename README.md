@@ -7,24 +7,20 @@ playwright e2e proof of concept demonstrating interaction with the Tally Ho exte
 - Interaction is done by opening the extension's id/popup.html in its own page.  
 
 ## Tests
-All tests use the tally Ho extension located at dist/chrome
+All tests use the tally Ho extension located at dist/chrome. This is the output directory when building the extension
+The playwright test files are all located under the e2e-tests directory
 
 1. Connect and disconnect from a dApp.  
 Imports a recovery phrase and connects and disconnects from a dapp.   
-The test file is available at tests/dapp-connect.spec.ts 
+**file:** dapp-connect.spec.ts 
 
 2. Create wallet.  
 Creates a wallet and verifies the seed.  
-The test file is available at tests/create-wallet.spec.ts
-
+**file:** create-wallet.spec.ts
 
 3. Remove wallet.    
 Removes a wallet (after creating it).   
-The test file is available at tests/remove-wallet.spec.ts
-
-4. Fail.    
-A test that explicitly throws an exception in order for a trace to be generated.  
-The test file is available at tests/fail.spec.ts
+**file:** remove-wallet.spec.ts
 
 ## Trace files of failing tests
 The trace of our failing tests is available in the test-results folder.  
@@ -49,16 +45,8 @@ e.g
 `$ npx playwright test create-wallet.spec.ts`
     
 ## github Actions integration
-A proof of concept workflow file has been created at .github/workflows/main.yml.   
-The workflow contains two jobs - build and e2e-tests. 
 
-### Build job
-This job's purpose is just to simulate the build job in tally ho's workflow file and allow for easy integration.  
-The job uploads the already built extension artifact using the same file name as tally ho's workflow build job -- 
-extension-builds.
-
-### e2e-tests job
-This job waits for the build job to complete, downloads the built extension artifact and places it in the proper location for it to be used with the tests
+A new job - e2e-tests has been added to the main.yml workflow to run the e2e tests. The job waits for the build job to complete, downloads the built extension artifact and places it in the proper location for it to be used with the tests
 
 ### Reports and traces
 All playwright standard output of the tests is available with the workflow run. 
