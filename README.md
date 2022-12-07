@@ -28,8 +28,11 @@ The trace includes screenshots and can be opened like so:
 `$ npx playwright show-trace test-results/fail-Fail-chromium/trace.zip`
 
 ## Setup
-
-`$ npm install`
+    $ nvm use
+    $ nvm install
+    $ npm install -g yarn # if you don't have yarn globally installed
+    $ yarn install
+    $ npx playwright install chromium
 
 ## Running the tests
 The following command runs all the tests together
@@ -46,7 +49,7 @@ e.g
     
 ## github Actions integration
 
-A new job - e2e-tests has been added to the main.yml workflow to run the e2e tests. The job waits for the build job to complete, downloads the built extension artifact and places it in the proper location for it to be used with the tests
+A new job to run the e2e tests, called 'e2e-tests', has been added to the main.yml workflow file. This job waits for the 'build' job to complete, downloads the built extension artifact, and places it in the correct location for use with the tests
 
 ### Reports and traces
 All playwright standard output of the tests is available with the workflow run. 
